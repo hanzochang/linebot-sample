@@ -1,0 +1,24 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  charset: utf8
+  collation: utf8_general_ci
+  pool: 5
+  socket: /tmp/mysql.sock
+
+development:
+  <<: *default
+  database: linebottest_development
+  user: root
+  url: <%= ENV['DATABASE_URL'] %>
+
+test:
+  <<: *default
+  database: linebottest_test
+  user: root
+  url: <%= ENV['DATABASE_URL'] %>
+
+production:
+  <<: *default
+  database: linebottest
+  url: <%= ENV['DATABASE_URL'] %>
